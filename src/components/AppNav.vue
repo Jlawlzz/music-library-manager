@@ -21,6 +21,7 @@
 </script>
 
 <style scoped lang="less">
+
   .ml-nav {
     height: 60px;
     flex-direction: row;

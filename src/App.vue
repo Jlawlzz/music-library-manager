@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <app-nav/>
-    <router-view class="ml-main"/>
+    <router-view/>
   </div>
 </template>
 
@@ -17,15 +17,14 @@
 </script>
 
 <style lang="less">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #F4FFF8;
-}
+  @import './styles/layout';
 
-.ml-main {
-
-}
+  #app {
+    // .flex-vertical-container;
+    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    // text-align: center;
+    color: #F4FFF8;
+  }
 </style>

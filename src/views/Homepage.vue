@@ -1,18 +1,18 @@
 <template>
   <div class="ml-homepage">
-    <header/>
+    <app-header/>
     <list/>
   </div>
 </template>
 
 <script>
-  import Header from '@/components/Header';
+  import AppHeader from '@/components/AppHeader';
   import List from '@/components/List';
 
   export default {
     name: 'Homepage',
     components: {
-      header: Header,
+      appHeader: AppHeader,
       list: List,
     },
     data() {
@@ -24,5 +24,10 @@
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style scoped lang="less">
+  @import '../styles/layout';
+
+  .ml-homepage {
+    .flex-vertical-container;
+  }
 </style>
