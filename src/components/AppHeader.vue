@@ -2,19 +2,64 @@
   <div class="ml-header">
     <div class="search">
       <i class="material-icons search-icon">search</i>
-      <div class="search-selector">
-        <h1>Songs:</h1>
-      </div>
+      <dropdown :options="dropdownOptions"
+                :onSelectedChange="onSelectedChange">
+      </dropdown>
       <div class="search-bar">
-        <input></input>
+        <input v-model="userInput"></input>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+  import Dropdown from '@/components/Dropdown';
+
   export default {
     name: 'AppHeader',
+    props: {
+      onSearchCallback: {
+        required: true,
+        type: Function,
+      },
+    },
+    components: {
+      dropdown: Dropdown,
+    },
+    data() {
+      return {
+        dropdownOptions: [
+          {
+            value: 'artist',
+            text: 'Artist',
+          },
+          {
+            value: 'song',
+            text: 'Song',
+          },
+          {
+            value: 'genre',
+            text: 'Genre',
+          },
+          {
+            value: 'album',
+            text: 'Album',
+          },
+        ],
+        searchValueIdx: 0,
+        userInput: '',
+      };
+    },
+    watch: {
+      userInput(val) {
+        this.onSearchCallback(val, this.dropdownOptions[this.searchValueIdx].value);
+      },
+    },
+    methods: {
+      onSelectedChange(idx) {
+        this.searchValueIdx = idx;
+      },
+    },
   };
 </script>
 

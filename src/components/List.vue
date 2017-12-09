@@ -19,18 +19,11 @@
     components: {
       listItem: ListItem,
     },
-    data() {
-      return {
-        listItems: [
-          {
-            id: 1,
-            title: 'Generic rock song #4',
-            artist: 'The Rock Gods',
-            genre: 'Rock',
-            url: 'url1',
-          },
-        ],
-      };
+    props: {
+      listItems: {
+        required: true,
+        type: Array,
+      },
     },
   };
 </script>
