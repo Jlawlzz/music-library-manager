@@ -1,5 +1,6 @@
 /* eslint-disable */
 import config from '../../config/default';
+import $ from "jquery";
 
 const CLIENT_ID = (process.env.CLIENT_ID) ?
   process.env.CLIENT_ID :

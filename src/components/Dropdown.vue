@@ -1,14 +1,19 @@
 <template>
   <div class="ml-dropdown" v-bind:class="{ active: isActive }">
     <h1 class="selected-value"
-        v-on:click="toggleActive()">{{options[selectedIdx].text}}:</h1>
+        v-on:click="toggleActive()">
+        {{options[selectedIdx].string}}
+        <i class="material-icons dropdown-icon">
+           arrow_drop_down
+        </i>
+    </h1>
     <div class="dropdown-drawer">
       <div v-for="(option, idx) in options"
            v-if="idx !== selectedIdx"
            class="dropdown-item"
            v-on:click="handleSelect(idx)"
            value="option.value">
-           {{option.text}}
+           {{option.string}}
       </div>
     </div>
   </div>
@@ -49,40 +54,45 @@
   @import '../styles/mixins';
 
   .ml-dropdown {
-
     .dropdown-drawer {
       display: none;
     }
-
     &.active {
-      background-color: @white; 
+      background-color: @grey-dark; 
+
       .dropdown-drawer {
         display: block;
-        background-color: @white;
+        background-color: @grey-dark;
       }
 
       .selected-value {
-        background-color: @white;
+        background-color: @grey-dark;
         color: @green;
       }
     }
   }
-
   .selected-value {
-    padding: 16px;
+    padding: 0 16px;
     cursor: pointer;
     margin: 0;
     font-size: 48px;
-    color: @white;
+    color: @grey-dark;
+
+    .dropdown-icon {
+      font-size: 32px;
+    }
   }
   .dropdown-drawer {
     position: absolute;
+    padding: 0 16px;
     font-size: 36px;
     color: @green;
-    padding: 16px;
 
     .dropdown-item {
       cursor: pointer;
+      &:hover {
+        color: @white;
+      }
     }
   }
 </style>

@@ -17,14 +17,21 @@
 </script>
 
 <style lang="less">
-  @import './styles/layout';
+  @import './styles/mixins';
+
+  body {
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+  }
 
   #app {
-    // .flex-vertical-container;
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
+    height: 100%;
+    width: 100%;
+    min-width: 900px;
+    .font-family-regular;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    // text-align: center;
-    color: #F4FFF8;
+    color: @white;
   }
 </style>

@@ -1,11 +1,9 @@
 <template>
   <div class="ml-list-item">
-    <div class="album-artwork"></div>
-    <div class="main-content">
-      <h2>{{title}}</h2>
-      <h4>{{artist}}</h4>
-    </div>
-    <h4>{{genre}}</h4>
+    <img class="album-artwork" :src="image"></img>
+    <h2 class="title">{{title}}</h2>
+    <h2 class="artist">{{artist}}</h2>
+    <h2 class="album">{{album}}</h2>
   </div>
 </template>
 
@@ -21,11 +19,11 @@
         type: String,
         required: true,
       },
-      genre: {
+      album: {
         type: String,
         required: true,
       },
-      url: {
+      image: {
         type: String,
         required: true,
       },
@@ -38,15 +36,31 @@
 
   .ml-list-item {
     .flex-horizontal-container;
-    padding: 30px 20px;
+    padding: 20px 20px;
     border-bottom: 2px solid @green;
     color: @grey-dark;
+    align-items: center;
+
+    .album-artwork {
+      background-color: @white;
+      height: 60px;
+      width: 60px;
+      margin-right: 30px;
+    }
+
+    .title {
+      width: 50%;
+    }
+
+    .artist, .album {
+      width: 25%;
+    }
   }
 
   .album-artwork {
-    background-color: @grey-light;
     height: 60px;
     width: 60px;
+    margin-right: 30px;
   }
 
   .main-content {

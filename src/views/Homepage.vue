@@ -1,57 +1,41 @@
 <template>
   <div class="ml-homepage">
-    <app-header :onSearchCallback="onSearchCallback"/>
-    <list :listItems="filteredSongs"/>
+    <list :listItems="songs"
+          :isLoading="isLoading"/>
   </div>
 </template>
 
 <script>
-  import AppHeader from '@/components/AppHeader';
   import List from '@/components/List';
-
-  const songs = [{
-    id: 1,
-    title: 'Generic rock song #4',
-    artist: 'The Rock Gods',
-    genre: 'Rock',
-    url: 'url1',
-  },
-  {
-    id: 2,
-    title: 'Generic rap song #234',
-    artist: 'The Rap People',
-    genre: 'Rap',
-    url: 'url2',
-  }];
+  import { getTracks } from '@/services/spotifyService';
 
   export default {
     name: 'Homepage',
     components: {
-      appHeader: AppHeader,
       list: List,
     },
     data() {
       return {
-        filteredSongs: songs,
+        songs: [],
+        isLoading: true,
       };
     },
-    methods: {
-      onSearchCallback(value, type) {
-        if (value !== '') {
-          this.filteredSongs = songs.filter(song => song[type].includes(value));
-        } else {
-          this.filteredSongs = songs;
-        }
-      },
+    mounted() {
+      this.isLoading = true;
+      getTracks()
+      .then((mappedSongs) => {
+        this.songs = mappedSongs;
+        this.isLoading = false;
+      });
     },
   };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
   @import '../styles/layout';
 
   .ml-homepage {
     .flex-vertical-container;
+    padding-top: 60px;
   }
 </style>

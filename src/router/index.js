@@ -31,7 +31,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Main',
+      name: 'Login',
       component: Login,
     },
     {
