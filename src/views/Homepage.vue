@@ -7,7 +7,7 @@
 
 <script>
   import List from '@/components/List';
-  import { getTracks } from '@/services/spotifyService';
+  import { getTracks, clearAuth } from '@/services/spotifyService';
 
   export default {
     name: 'Homepage',
@@ -26,6 +26,9 @@
       .then((mappedSongs) => {
         this.songs = mappedSongs;
         this.isLoading = false;
+      }, () => {
+        clearAuth();
+        this.$router.go('Login');
       });
     },
   };

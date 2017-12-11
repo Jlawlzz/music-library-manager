@@ -160,6 +160,9 @@ export function getTracks() {
           let tracks = [];
           parseSongs(response.items, tracks);
           fetchAllTracks(tracks, totalTrackCount, resolve);
+        },
+        error: function(err) {
+          reject();
         }
     });
   });
